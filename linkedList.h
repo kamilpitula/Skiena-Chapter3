@@ -1,6 +1,7 @@
 typedef struct LinkedList
 {
     int value;
+    int sentinel;
     struct LinkedList *next;
 } LinkedList;
 

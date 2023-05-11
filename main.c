@@ -75,7 +75,7 @@ int main(void)
     insertElement(&list, 7);
     insertElement(&list, 5);
 
-    LinkedList* searchResult = searchList(list, 5);
+    LinkedList* searchResult = searchList(list, 7);
     removeElement(&list, searchResult);
 
     printf("Search result %i\n", searchResult->value);

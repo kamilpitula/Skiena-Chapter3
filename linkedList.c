@@ -7,11 +7,17 @@ void insertElement(LinkedList **list, int value)
 {
     LinkedList *newElement = malloc(sizeof(LinkedList));
     newElement->value = value;
+    newElement->sentinel = 0;
 
     if (*list == NULL)
     {
+        LinkedList *sentinel = malloc(sizeof(LinkedList));
+        sentinel->sentinel = 1;
+        sentinel->value = 0;
+        sentinel->next = NULL;
+
         *list = newElement;
-        (*list)->next = NULL;
+        (*list)->next = sentinel;
         return;
     }
 
@@ -39,16 +45,9 @@ void removeElement(LinkedList **list, LinkedList *element)
         return;
     }
 
-    LinkedList *itemAhead = *list;
+    LinkedList *next = element->next;
+    element->value = next->value;
+    element->next = next->next;
 
-    do
-    {
-        if (itemAhead->next == element)
-            break;
-
-        itemAhead = itemAhead->next;
-    } while (itemAhead->next != NULL);
-
-    itemAhead->next = element->next;
-    free(element);
+    free(next);
 }
