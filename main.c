@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "stack.h"
+#include "linkedList.h"
 
 int validParentheses(char *str, size_t len)
 {
@@ -67,6 +68,17 @@ void executeParentheses()
 
 int main(void)
 {
-    executeParentheses();
+    // executeParentheses();
+
+    LinkedList* list = NULL;
+    insertElement(&list, 4);
+    insertElement(&list, 7);
+    insertElement(&list, 5);
+
+    LinkedList* searchResult = searchList(list, 5);
+    removeElement(&list, searchResult);
+
+    printf("Search result %i\n", searchResult->value);
+
     return 0;
 }
