@@ -6,7 +6,7 @@
 
 int validParentheses(char *str, size_t len)
 {
-    Stack* stack = init(len);
+    Stack *stack = init(len);
 
     for (int i = 0; i < len; i++)
     {
@@ -16,13 +16,21 @@ int validParentheses(char *str, size_t len)
         {
             char res = pop(stack);
             if (res == -1)
+            {
+                freeStack(stack);
                 return i;
+            }
         }
     }
 
-    if(stack->position >= 0)
-        return pop(stack);
+    if (stack->position >= 0)
+    {
+        int result = pop(stack);
+        freeStack(stack);
+        return result;
+    }
 
+    freeStack(stack);
     return -1;
 }
 
