@@ -8,3 +8,4 @@ typedef struct LinkedList
 extern void insertElement(LinkedList **list, int value);
 extern void removeElement(LinkedList **list, LinkedList *element);
 extern LinkedList *searchList(LinkedList *list, int value);
+extern void reverse(LinkedList **list);

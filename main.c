@@ -75,6 +75,8 @@ int main(void)
     insertElement(&list, 7);
     insertElement(&list, 5);
 
+    reverse(&list);
+
     LinkedList* searchResult = searchList(list, 7);
     removeElement(&list, searchResult);
 

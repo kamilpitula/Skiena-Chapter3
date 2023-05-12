@@ -51,3 +51,21 @@ void removeElement(LinkedList **list, LinkedList *element)
 
     free(next);
 }
+
+void reverse(LinkedList **list)
+{
+    LinkedList *first = *list;
+    LinkedList *prev = NULL;
+    LinkedList *current = *list;
+    LinkedList *next = NULL;
+
+    while (current->sentinel != 1)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    first->next = next;
+    *list = prev;
+}
