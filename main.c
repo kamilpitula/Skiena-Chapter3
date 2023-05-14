@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "stack.h"
 #include "linkedList.h"
+#include "tictactoe.h"
 
 int validParentheses(char *str, size_t len)
 {
@@ -114,7 +115,8 @@ void executeParentheses()
 
 int main(void)
 {
-    executeParentheses();
+
+    // executeParentheses();
 
     // LinkedList *list = NULL;
     // insertElement(&list, 4);
@@ -127,6 +129,24 @@ int main(void)
     // removeElement(&list, searchResult);
 
     // printf("Search result %i\n", searchResult->value);
+
+    TicTacToe *game;
+    initBoard(&game, 3);
+    Move moves[] = {
+        {.row = 1, .column = 1, .player = 1},
+        {.row = 1, .column = 2, .player = 2},
+        {.row = 2, .column = 2, .player = 1},
+        {.row = 3, .column = 3, .player = 2},
+        {.row = 2, .column = 1, .player = 1},
+        {.row = 3, .column = 1, .player = 2},
+        {.row = 3, .column = 2, .player = 1},
+        {.row = 2, .column = 3, .player = 2},
+        {.row = 1, .column = 3, .player = 1},
+    };
+
+    int winner = performMoves(game, moves, sizeof(moves) / sizeof(Move));
+
+    deleteBoard(game);
 
     return 0;
 }
