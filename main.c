@@ -149,7 +149,7 @@ int main(void)
 
     deleteBoard(game);
 
-    int areAnagramsResult = areAnagrams("silent", 6, "listen", 6);    
+    bool areAnagramsResult = areAnagrams("silent", "listen");    
 
     return 0;
 }

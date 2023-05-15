@@ -1,24 +1,30 @@
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
-int areAnagrams(char *a, size_t a_len, char *b, size_t b_len)
+bool areAnagrams(char *s, char *t)
 {
-    if (a_len != b_len)
-        return 0;
+    size_t a_len = strlen(s);
+    size_t b_len = strlen(t);
 
-    int *letters = calloc(24, sizeof(int));
+    if (a_len != b_len)
+        return false;
+
+    int *lettersS = calloc(26, sizeof(int));
+    int *lettersT = calloc(26, sizeof(int));
 
     for (int i = 0; i < a_len; i++)
     {
-        letters[a[i] - 'a']++;
-        letters[b[i] - 'a']++;
+        lettersS[s[i] - 'a']++;
+        lettersT[t[i] - 'a']++;
     }
 
     for (int i = 0; i < 24; i++)
     {
-        if (letters[i] % 2 != 0)
-            return 0;
+        if (lettersS[i] != lettersT[i])
+            return false;
     }
 
-    return 1;
+    return true;
 }
