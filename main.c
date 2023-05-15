@@ -5,6 +5,7 @@
 #include "stack.h"
 #include "linkedList.h"
 #include "tictactoe.h"
+#include "anagram.h"
 
 int validParentheses(char *str, size_t len)
 {
@@ -147,6 +148,8 @@ int main(void)
     int winner = performMoves(game, moves, sizeof(moves) / sizeof(Move));
 
     deleteBoard(game);
+
+    int areAnagramsResult = areAnagrams("silent", 6, "listen", 6);    
 
     return 0;
 }
