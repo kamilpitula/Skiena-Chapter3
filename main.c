@@ -159,5 +159,8 @@ int main(void)
     insertTreeElement(&tree, 5);
     insertTreeElement(&tree, 1);
 
+    BinaryTree* minimum = findMinimum(tree);
+    BinaryTree* maximum = findMaximum(tree);
+
     return 0;
 }
