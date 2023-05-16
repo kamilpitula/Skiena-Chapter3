@@ -7,3 +7,4 @@ typedef struct BinaryTree {
 extern void insertTreeElement(BinaryTree** tree, int value);
 extern BinaryTree* findMinimum(BinaryTree* tree);
 extern BinaryTree* findMaximum(BinaryTree* tree);
+extern BinaryTree* searchTree(BinaryTree* tree, int value);

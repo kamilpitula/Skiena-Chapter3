@@ -162,5 +162,8 @@ int main(void)
     BinaryTree* minimum = findMinimum(tree);
     BinaryTree* maximum = findMaximum(tree);
 
+    BinaryTree* searchResult_3 = searchTree(tree, 3);
+    BinaryTree* searchResult_5 = searchTree(tree, 5);
+
     return 0;
 }

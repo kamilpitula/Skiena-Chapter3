@@ -49,3 +49,17 @@ BinaryTree *findMaximum(BinaryTree *tree)
 
     return minimum;
 }
+
+BinaryTree *searchTree(BinaryTree *tree, int value)
+{
+    if (tree == NULL)
+        return NULL;
+
+    if (tree->value == value)
+        return tree;
+
+    if (value < tree->value)
+        return searchTree(tree->left, value);
+
+    return searchTree(tree->right, value);
+}
