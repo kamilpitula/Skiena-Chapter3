@@ -6,6 +6,7 @@
 #include "linkedList.h"
 #include "tictactoe.h"
 #include "anagram.h"
+#include "binaryTree.h"
 
 int validParentheses(char *str, size_t len)
 {
@@ -149,7 +150,14 @@ int main(void)
 
     deleteBoard(game);
 
-    bool areAnagramsResult = areAnagrams("silent", "listen");    
+    bool areAnagramsResult = areAnagrams("silent", "listen");
+
+    BinaryTree* tree = NULL;
+
+    insertTreeElement(&tree, 4);
+    insertTreeElement(&tree, 3);
+    insertTreeElement(&tree, 5);
+    insertTreeElement(&tree, 1);
 
     return 0;
 }
