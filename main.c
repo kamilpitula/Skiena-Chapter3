@@ -154,16 +154,22 @@ int main(void)
 
     BinaryTree* tree = NULL;
 
-    insertTreeElement(&tree, 4);
-    insertTreeElement(&tree, 3);
-    insertTreeElement(&tree, 5);
+    insertTreeElement(&tree, 2);
     insertTreeElement(&tree, 1);
+    insertTreeElement(&tree, 7);
+    insertTreeElement(&tree, 4);
+    insertTreeElement(&tree, 8);
+    insertTreeElement(&tree, 3);
+    insertTreeElement(&tree, 6);
+    insertTreeElement(&tree, 5);
 
-    BinaryTree* minimum = findMinimum(tree);
-    BinaryTree* maximum = findMaximum(tree);
+    // BinaryTree* minimum = findMinimum(tree);
+    // BinaryTree* maximum = findMaximum(tree);
 
-    BinaryTree* searchResult_3 = searchTree(tree, 3);
-    BinaryTree* searchResult_5 = searchTree(tree, 5);
+    // BinaryTree* searchResult_3 = searchTree(tree, 3);
+    // BinaryTree* searchResult_5 = searchTree(tree, 5);
+
+    deleteFromTree(&tree, 4);
 
     return 0;
 }

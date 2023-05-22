@@ -63,3 +63,49 @@ BinaryTree *searchTree(BinaryTree *tree, int value)
 
     return searchTree(tree->right, value);
 }
+
+void deleteFromTree(BinaryTree **tree, int value)
+{
+    if (value < (*tree)->value)
+    {
+        deleteFromTree(&(*tree)->left, value);
+        return;
+    }
+
+    if (value > (*tree)->value)
+    {
+        deleteFromTree(&(*tree)->right, value);
+        return;
+    }
+
+    if (tree == NULL)
+        return;
+
+    if ((*tree)->left == NULL && (*tree)->right == NULL)
+    {
+        free(*tree);
+        *tree = NULL;
+        return;
+    }
+
+    if ((*tree)->left != NULL && (*tree)->right == NULL)
+    {
+        BinaryTree *temp = *tree;
+        *tree = (*tree)->left;
+        free(temp);
+        return;
+    }
+
+    if ((*tree)->right != NULL && (*tree)->left == NULL)
+    {
+        BinaryTree *temp = *tree;
+        *tree = (*tree)->right;
+        free(temp);
+        return;
+    }
+
+    BinaryTree *successor = findMinimum((*tree)->right);
+    int tempValue = successor->value;
+    deleteFromTree(&(*tree)->right, tempValue);
+    (*tree)->value = tempValue;
+}
