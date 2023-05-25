@@ -77,7 +77,7 @@ bool deleteFromTree(BinaryTree **tree, int value)
 {
     if (*tree == NULL)
         return false;
-        
+
     if (value < (*tree)->value)
     {
         bool res = deleteFromTree(&(*tree)->left, value);
@@ -127,4 +127,17 @@ bool deleteFromTree(BinaryTree **tree, int value)
     (*tree)->value = tempValue;
     (*tree)->rightNodesCount--;
     return true;
+}
+
+BinaryTree *searchKSmallest(BinaryTree *tree, int k)
+{
+    if (tree == NULL)
+        return NULL;
+    if (tree->leftNodesCount + 1 == k)
+        return tree;
+
+    if (tree->leftNodesCount >= k)
+        return searchKSmallest(tree->left, k);
+
+    return searchKSmallest(tree->right, k - tree->leftNodesCount - 1);
 }

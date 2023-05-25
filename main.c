@@ -169,6 +169,10 @@ int main(void)
     // BinaryTree* searchResult_3 = searchTree(tree, 3);
     // BinaryTree* searchResult_5 = searchTree(tree, 5);
 
+    BinaryTree* a = searchKSmallest(tree, 2);
+    BinaryTree* b = searchKSmallest(tree, 1);
+    BinaryTree* c = searchKSmallest(tree, 8);
+
     deleteFromTree(&tree, 4);
     deleteFromTree(&tree, 1);
 
