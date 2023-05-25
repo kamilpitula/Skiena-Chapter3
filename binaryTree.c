@@ -8,16 +8,24 @@ void insertTreeElement(BinaryTree **tree, int value)
     {
         BinaryTree *temp = malloc(sizeof(BinaryTree));
         temp->right = NULL;
+        temp->rightNodesCount = 0;
         temp->left = NULL;
+        temp->leftNodesCount = 0;
         temp->value = value;
         *tree = temp;
         return;
     }
 
     if (value <= (*tree)->value)
+    {
+        (*tree)->leftNodesCount++;
         insertTreeElement(&((*tree)->left), value);
+    }
     else
+    {
+        (*tree)->rightNodesCount++;
         insertTreeElement(&((*tree)->right), value);
+    }
 }
 
 BinaryTree *findMinimum(BinaryTree *tree)
@@ -66,14 +74,21 @@ BinaryTree *searchTree(BinaryTree *tree, int value)
 
 void deleteFromTree(BinaryTree **tree, int value)
 {
+    if (searchTree(*tree, value) == NULL)
+    {
+        return;
+    }
+
     if (value < (*tree)->value)
     {
+        (*tree)->leftNodesCount--;
         deleteFromTree(&(*tree)->left, value);
         return;
     }
 
     if (value > (*tree)->value)
     {
+        (*tree)-> rightNodesCount--;
         deleteFromTree(&(*tree)->right, value);
         return;
     }
@@ -108,4 +123,5 @@ void deleteFromTree(BinaryTree **tree, int value)
     int tempValue = successor->value;
     deleteFromTree(&(*tree)->right, tempValue);
     (*tree)->value = tempValue;
+    (*tree)->rightNodesCount--;
 }

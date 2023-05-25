@@ -1,6 +1,8 @@
 typedef struct BinaryTree {
     struct BinaryTree* left;
+    int leftNodesCount;
     struct BinaryTree* right;
+    int rightNodesCount;
     int value;
 } BinaryTree;
 
