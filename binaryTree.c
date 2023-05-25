@@ -1,6 +1,7 @@
 #include "binaryTree.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void insertTreeElement(BinaryTree **tree, int value)
 {
@@ -72,35 +73,36 @@ BinaryTree *searchTree(BinaryTree *tree, int value)
     return searchTree(tree->right, value);
 }
 
-void deleteFromTree(BinaryTree **tree, int value)
+bool deleteFromTree(BinaryTree **tree, int value)
 {
-    if (searchTree(*tree, value) == NULL)
-    {
-        return;
-    }
-
+    if (*tree == NULL)
+        return false;
+        
     if (value < (*tree)->value)
     {
-        (*tree)->leftNodesCount--;
-        deleteFromTree(&(*tree)->left, value);
-        return;
+        bool res = deleteFromTree(&(*tree)->left, value);
+        if (res == true)
+        {
+            (*tree)->leftNodesCount--;
+        }
+        return res;
     }
 
     if (value > (*tree)->value)
     {
-        (*tree)-> rightNodesCount--;
-        deleteFromTree(&(*tree)->right, value);
-        return;
+        bool res = deleteFromTree(&(*tree)->right, value);
+        if (res == true)
+        {
+            (*tree)->rightNodesCount--;
+        }
+        return res;
     }
-
-    if (tree == NULL)
-        return;
 
     if ((*tree)->left == NULL && (*tree)->right == NULL)
     {
         free(*tree);
         *tree = NULL;
-        return;
+        return true;
     }
 
     if ((*tree)->left != NULL && (*tree)->right == NULL)
@@ -108,7 +110,7 @@ void deleteFromTree(BinaryTree **tree, int value)
         BinaryTree *temp = *tree;
         *tree = (*tree)->left;
         free(temp);
-        return;
+        return true;
     }
 
     if ((*tree)->right != NULL && (*tree)->left == NULL)
@@ -116,7 +118,7 @@ void deleteFromTree(BinaryTree **tree, int value)
         BinaryTree *temp = *tree;
         *tree = (*tree)->right;
         free(temp);
-        return;
+        return true;
     }
 
     BinaryTree *successor = findMinimum((*tree)->right);
@@ -124,4 +126,5 @@ void deleteFromTree(BinaryTree **tree, int value)
     deleteFromTree(&(*tree)->right, tempValue);
     (*tree)->value = tempValue;
     (*tree)->rightNodesCount--;
+    return true;
 }

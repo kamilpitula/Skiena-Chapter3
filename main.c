@@ -170,6 +170,7 @@ int main(void)
     // BinaryTree* searchResult_5 = searchTree(tree, 5);
 
     deleteFromTree(&tree, 4);
+    deleteFromTree(&tree, 1);
 
     return 0;
 }
