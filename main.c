@@ -163,6 +163,19 @@ int main(void)
     insertTreeElement(&tree, 6);
     insertTreeElement(&tree, 5);
 
+    int isTreeBalanced = isBalanced(tree);
+
+    printf("%s", isTreeBalanced == -1 ? "Tree is not balanced\n" : "Tree is balanced\n");
+
+    BinaryTree* balancedTree = NULL;
+
+    insertTreeElement(&balancedTree, 2);
+    insertTreeElement(&balancedTree, 1);
+    insertTreeElement(&balancedTree, 7);
+    insertTreeElement(&balancedTree, 4);
+
+    printf("%s", isBalanced(balancedTree) == -1 ? "Tree is not balanced\n" : "Tree is balanced\n");
+
     // BinaryTree* minimum = findMinimum(tree);
     // BinaryTree* maximum = findMaximum(tree);
 

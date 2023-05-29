@@ -141,3 +141,20 @@ BinaryTree *searchKSmallest(BinaryTree *tree, int k)
 
     return searchKSmallest(tree->right, k - tree->leftNodesCount - 1);
 }
+
+int isBalanced(BinaryTree *tree)
+{
+    if (tree == NULL)
+        return 0;
+    int leftHeight = isBalanced(tree->left);
+    if(leftHeight == -1)
+        return -1;
+    int rightHeight = isBalanced(tree->right);
+    if(rightHeight == -1)
+        return -1;
+
+    if(abs(leftHeight - rightHeight) > 1)
+        return -1;
+    
+    return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+}

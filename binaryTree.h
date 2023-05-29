@@ -14,3 +14,4 @@ extern BinaryTree* findMaximum(BinaryTree* tree);
 extern BinaryTree* searchTree(BinaryTree* tree, int value);
 extern bool deleteFromTree(BinaryTree** tree, int value);
 extern BinaryTree* searchKSmallest(BinaryTree* tree, int k);
+extern int isBalanced(BinaryTree* tree);
